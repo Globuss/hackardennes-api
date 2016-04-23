@@ -13,7 +13,14 @@ class PointController extends ResourceController
 {
     public function getByMajorMinorAction(Request $request, Point $point)
     {
-        $resource = $this->getResource($request);
+        $em = $this->getDoctrine()->getManager();
+		$beaconHit = new BeaconHit();
+		$beaconHit->setMinor($point->getMinor());
+		$beaconHit->setMajor($point->getMajor());
+		$em->persist($beaconHit);
+		$em->flush();
+		
+		$resource = $this->getResource($request);
 
         return $this->getSuccessResponse($resource, $point);
     }
