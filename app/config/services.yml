@@ -12,9 +12,9 @@ services:
         arguments:
             -    "@resource.point"               # Resource
             -    [ "GET", "HEAD" ]                 # Methods
-            -    "/point/{major}/{minor}"           # Path
+            -    "/points/major/{major}/minor/{minor}"           # Path
             -    "AppBundle:Point:getByMajorMinor"         # Controller
-            -    "poing_get_by_major_minor"                 # Route name
+            -    "api_points_major_minor"                 # Route name
             -    # Context (will be present in Hydra documentation)
                  "@type":       "hydra:Operation"
                  "hydra:title": "Retrieve point by major and minor"
