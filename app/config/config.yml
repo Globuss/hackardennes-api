@@ -66,3 +66,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+dunglas_api:
+    title:       "Your API name"                    # The title of the API.
+    description: "The full description of your API" # The description of the API.
