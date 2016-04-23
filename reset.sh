@@ -6,3 +6,4 @@ php bin/console doctrine:schema:create
 
 php bin/console app:ImportChateauPathCommand
 php bin/console app:ImportItinerairesCommand y
+php bin/console app:ImportChateauPathCommand
