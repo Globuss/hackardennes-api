@@ -1,6 +1,6 @@
 NAME,DESC,PHOTO,LAT,LONG,MAJ,MIN,RANK
-Carte du Château,Une carte du chateau,1-carte.jpg,49.702100,4.949318,1,2,10
-Hôtellerie,L'hôtellerie 4* du chateau,2-hotellerie.jpg,49.702053,4.949244,1,3,20
-Entrée,Un beau porche.,3-porche.jpg,49.702261,4.949422,,,30
-Panorama,Avant du chateau,4-devant.jpg,49.702570,4.950423,,,40
-Tour,Une tour,5-tour.jpg,49.701916,4.951840,,,50
+Carte du Château,Une carte du chateau,images/1-carte.jpg,49.702100,4.949318,1,2,10
+Hôtellerie,L'hôtellerie 4* du chateau,images/2-hotellerie.jpg,49.702053,4.949244,1,3,20
+Entrée,Un beau porche.,images/3-porche.jpg,49.702261,4.949422,,,30
+Panorama,Avant du chateau,images/4-devant.jpg,49.702570,4.950423,,,40
+Tour,Une tour,images/5-tour.jpg,49.701916,4.951840,,,50

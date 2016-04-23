@@ -30,10 +30,10 @@ class ImportItinerairesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $file = fopen('csv/Itineraires.csv','r');
+        $file = fopen('csv/Itineraires.csv', 'r');
         fgetcsv($file);
-        
-        while($fields = fgetcsv($file)){
+
+        while ($fields = fgetcsv($file)) {
 
             $path = new Path();
             $point = new Point($path);
@@ -41,37 +41,37 @@ class ImportItinerairesCommand extends ContainerAwareCommand
             $path->setName($fields[1]);
             $allThePoints = new ArrayCollection();
 
-            $point ->setLatitude($fields[24]);
-            $point ->setLongitude($fields[25]);
-            $point -> setRank(0);
-            $point ->setName($fields[29]);
-            $point ->setDescription($fields[32]);
-            $point ->setCity($fields[15]);
-            $point ->setImage($fields[50]);
+            $point->setLatitude($fields[24]);
+            $point->setLongitude($fields[25]);
+            $point->setRank(0);
+            $point->setName($fields[29]);
+            $point->setDescription($fields[32]);
+            $point->setCity($fields[15]);
+            $point->setImage($fields[50]);
             $em->persist($point);
             $allThePoints->add($point);
 
             // Creer des points aléatoires associés au path
-            if(strtoupper($input->getArgument('guessPoint')) == 'Y'){
+            if (strtoupper($input->getArgument('guessPoint')) == 'Y') {
 
-                $nbPoints = rand(1,4); // Nombre de points a generer
-                for($i = 0; $i < $nbPoints; $i++){
+                $nbPoints = rand(1, 4); // Nombre de points a generer
+                for ($i = 0; $i < $nbPoints; $i++) {
                     $guessedPoint = new Point($path);
-                    $guessedPoint ->setLatitude($fields[24] + $i *(mt_rand() / mt_getrandmax())/1000);
-                    $guessedPoint ->setLongitude($fields[25] + $i *(mt_rand() / mt_getrandmax())/1000);
-                    $guessedPoint -> setRank($i+1);
-                    $guessedPoint ->setName($fields[29].'_'.($i+1));
-                    $guessedPoint ->setCity($fields[15]);
-                    $guessedPoint ->setDescription($fields[32]);
-                    $guessedPoint ->setImage($fields[50]);
+                    $guessedPoint->setLatitude($fields[24] + $i * (mt_rand() / mt_getrandmax()) / 1000);
+                    $guessedPoint->setLongitude($fields[25] + $i * (mt_rand() / mt_getrandmax()) / 1000);
+                    $guessedPoint->setRank($i + 1);
+                    $guessedPoint->setName($fields[29] . '_' . ($i + 1));
+                    $guessedPoint->setCity($fields[15]);
+                    $guessedPoint->setDescription($fields[32]);
+                    $guessedPoint->setImage($fields[50]);
 
-                    $allThePoints ->add($guessedPoint);
+                    $allThePoints->add($guessedPoint);
                     $em->persist($guessedPoint);
                 }
             }
-            $path ->setPoints($allThePoints);
+            $path->setPoints($allThePoints);
             $em->persist($path);
-            $output->writeln("Added path :". $path->getName());
+            $output->writeln("Added path :" . $path->getName());
 
         }
         $em->flush();
