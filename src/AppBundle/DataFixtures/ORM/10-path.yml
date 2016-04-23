@@ -1,6 +1,3 @@
-'AppBundle\Entity\Point':
-    point_{1..100}:
-        latitude: <randomFloat(5, 3, 4)
-        longitude: <randomFloat(5, 49, 50)
-        major: 1
-        minot: <current()>
+'AppBundle\Entity\Path':
+    path_{1..100}:
+        name: path <current()>
