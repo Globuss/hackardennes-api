@@ -13,8 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class BeaconHit
 {
-	
-	
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -23,8 +23,8 @@ class BeaconHit
      * @var int
      */
     private $id;
-	
-    
+
+
     /**
      * @Groups({"path"})
      * @ORM\Column(type="integer")
@@ -41,41 +41,48 @@ class BeaconHit
      */
     private $minor;
 
-	/**
-	* @ORM\Column(type="datetime")
-	*/
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private $dateHit;
 
     public function __construct()
     {
-        $this->dateHit = date("Y-m-d H:i:s");
+        $this->dateHit = new \DateTime();
     }
 
-	public function getMajor(){
-		return $this->major;
-	}
-	
-	public function getMinor(){
-		return $this->minor;
-	}
-	
-	public function getDateHit(){
-		return $this->dateHit;
-	}
-	
-	public function getId(){
-		return $this->id;
-	}
-	
-	public function setMajor($major){
-		$this->major = $major;
-	}
-	
-	public function setMinor($minor){
-		$this->minor = $minor;
-	}
+    public function getMajor()
+    {
+        return $this->major;
+    }
 
-	public function setDateHit($dateHit){
-		$this->dateHit = $dateHit;
-	}
+    public function getMinor()
+    {
+        return $this->minor;
+    }
+
+    public function getDateHit()
+    {
+        return $this->dateHit;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setMajor($major)
+    {
+        $this->major = $major;
+    }
+
+    public function setMinor($minor)
+    {
+        $this->minor = $minor;
+    }
+
+    public function setDateHit(\DateTime $dateHit)
+    {
+        $this->dateHit = $dateHit;
+    }
 }
