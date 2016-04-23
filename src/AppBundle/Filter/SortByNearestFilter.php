@@ -19,7 +19,8 @@ class SortByNearestFilter extends AbstractFilter
 
         if ($lat & $long) {
             $queryBuilder
-                ->addOrderBy('GEO(o.latitude = :lat, o.longitude = :long)')
+                ->addSelect('GEO(o.latitude = :lat, o.longitude = :long) AS distance')
+                ->addOrderBy('distance')
                 ->setParameter('lat', $lat)
                 ->setParameter('long', $long);
         }
