@@ -2,28 +2,25 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Path;
+use AppBundle\Entity\Point;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author Yohan Giarelli <yohan@un-zero-un.fr>
  */
-class PathType extends AbstractType
+class PointType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('major')
+            ->add('minor')
+            ->add('latitude')
+            ->add('longitude')
             ->add('name')
-            ->add(
-                'points',
-                CollectionType::class,
-                [
-                    'type' => PointType::class,
-                ]
-            );
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -31,7 +28,7 @@ class PathType extends AbstractType
         $resolver
             ->setDefaults(
                 [
-                    'data_class' => Path::class
+                    'data_class' => Point::class,
                 ]
             );
     }

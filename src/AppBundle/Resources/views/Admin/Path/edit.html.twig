@@ -1,6 +1,10 @@
-<form action="{{ path('admin_paths_edit', {id: path.id}) }}" method="POST">
+{% extends '::base.html.twig' %}
 
-    {{ form_widget(form) }}
+{% block body %}
+    <form action="{{ path('admin_paths_edit', {id: path.id}) }}" method="POST" class="form form-horizontal">
 
-    <button type="submit">Enregistrer</button>
-</form>
+        {{ form_widget(form) }}
+
+        <button type="submit">Enregistrer</button>
+    </form>
+{% endblock %}
