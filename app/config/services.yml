@@ -10,6 +10,13 @@ services:
     resource.path:
         parent:    "api.resource"
         arguments: [ 'AppBundle\Entity\Path' ]
+        calls:
+            -      method:    "initNormalizationContext"
+                   arguments: [ { groups: [ "path" ] } ]
+            -      method:    "initDenormalizationContext"
+                   arguments: [ { groups: [ "path" ] } ]
+            -      method:    "initFilters"
+                   arguments: [ [ "@resource.point.nearest" ] ]
         tags:      [ { name: "api.resource" } ]
 
     resource.point.nearest:
