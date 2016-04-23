@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Hautelook\AliceBundle\HautelookAliceBundle(),
             new Dunglas\ApiBundle\DunglasApiBundle(),
             new AppBundle\AppBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

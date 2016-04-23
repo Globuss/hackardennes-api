@@ -42,15 +42,18 @@ class ImportPathCommand extends ContainerAwareCommand
 
             $point ->setLatitude($fields[24]);
             $point ->setLongitude($fields[25]);
-            $point -> setStart(true);
+            $point -> setRank(0);
 
             // Creer des points aléatoires associés au path
             if(strtoupper($input->getArgument('guessPoint')) == 'Y'){
+                
                 $nbPoints = rand(1,4); // Nombre de points a generer
                 for($i = 0; $i < $nbPoints; $i++){
                     $guessedPoint = new Point($path);
                     $guessedPoint ->setLatitude($fields[24] + $i *(mt_rand() / mt_getrandmax())/1000);
                     $guessedPoint ->setLongitude($fields[25] + $i *(mt_rand() / mt_getrandmax())/1000);
+                    $guessedPoint -> setRank($i);
+
                     $em->persist($guessedPoint);
                 }
             }
