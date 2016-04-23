@@ -1,30 +1,34 @@
 <?php
 
+use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @var Composer\Autoload\ClassLoader
  */
 $loader = require __DIR__.'/../app/autoload.php';
-include_once __DIR__.'/../var/bootstrap.php.cache';
 
-// Enable APC for autoloading to improve performance.
-// You should change the ApcClassLoader first argument to a unique prefix
-// in order to prevent cache key conflicts with other applications
-// also using APC.
+$config = ['env' => 'prod', 'debug' => false];
+if (is_file(__DIR__.'/../env.php')) {
+    $config = require __DIR__ . '/../env.php';
+}
+
+if ($config['debug']) {
+    Debug::enable();
+} else {
+    include_once __DIR__.'/../app/bootstrap.php.cache';
+}
+
 /*
-$apcLoader = new Symfony\Component\ClassLoader\ApcClassLoader(sha1(__FILE__), $loader);
+$apcLoader = new Symfony\Component\ClassLoader\ApcClassLoader(sha1(__DIR__), $loader);
 $loader->unregister();
 $apcLoader->register(true);
 */
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AppKernel($config['env'], $config['debug']);
 $kernel->loadClassCache();
-//$kernel = new AppCache($kernel);
 
-// When using the HttpCache, you need to call the method in your front controller instead of relying on the configuration parameter
-//Request::enableHttpMethodParameterOverride();
-$request = Request::createFromGlobals();
+$request  = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);

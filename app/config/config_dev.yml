@@ -32,3 +32,10 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+
+hautelook_alice:
+    db_drivers:
+        orm: ~          # Enable Doctrine ORM if is registered
+    locale: fr_FR
+    seed: 100
