@@ -24,26 +24,26 @@ class ImportChateauPathCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $file = fopen('csv/abords-du-chateau.csv','r');
+        $file = fopen('csv/abords-du-chateau.csv', 'r');
         fgetcsv($file);
 
         $path = new Path();
         $path->setName('Visite du Chateau de Sedan');
         $allPoints = new ArrayCollection();
         $rank = 0;
-        while($fields = fgetcsv($file)){
+        while ($fields = fgetcsv($file)) {
 
             $point = new Point($path);
 
-            $point ->setLatitude($fields[3]);
-            $point ->setLongitude($fields[4]);
-            $point ->setMajor($fields[5]);
-            $point ->setMinor($fields[6]);
-            $point ->setRank($rank);
-            $point ->setCity('Sedan');
-            $point ->setName($fields[0]);
-            $point ->setDescription($fields[1]);
-            $point ->setImage($fields[2]);
+            $point->setLatitude($fields[3]);
+            $point->setLongitude($fields[4]);
+            $point->setMajor(intval($fields[5]) ?: null);
+            $point->setMinor(intval($fields[6]) ?: null);
+            $point->setRank($rank);
+            $point->setCity('Sedan');
+            $point->setName($fields[0]);
+            $point->setDescription($fields[1]);
+            $point->setImage($fields[2]);
 
             $em->persist($point);
             $allPoints->add($point);
