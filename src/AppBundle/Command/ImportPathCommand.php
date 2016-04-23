@@ -29,12 +29,22 @@ class ImportPathCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
+
+        $output->writeln('Reading of Itineraires.csv');
+        if(strtoupper($input->getArgument('guessPoint')) == 'Y') {
+            $output->writeln('Copy of Itineraires.csv and adding of fictive points');
+        }
+        else{
+            $output->writeln('Copy of Itineraires.csv');
+        }
+        $output->writeln('-------------------------------------------------------------------');
+
         $file = fopen('csv/Itineraires.csv','r');
         fgetcsv($file);
 
         while($fields = fgetcsv($file)){
 
-            $path = new Path();
+            $path = new Path(); // Creation du Parcours et du point associé dans le csv
             $point = new Point($path);
 
             $path->setName($fields[1]);
@@ -44,7 +54,7 @@ class ImportPathCommand extends ContainerAwareCommand
             $point ->setLongitude($fields[25]);
             $point -> setStart(true);
 
-            // Creer des points aléatoires associés au path
+            // Creer des points aléatoires associés au path ( afin de gerer le systeme d'itineraires )
             if(strtoupper($input->getArgument('guessPoint')) == 'Y'){
                 $nbPoints = rand(1,4); // Nombre de points a generer
                 for($i = 0; $i < $nbPoints; $i++){
@@ -56,6 +66,7 @@ class ImportPathCommand extends ContainerAwareCommand
             }
 
             $em->persist($path);
+            $output->writeln('Creation of path : ' . $path->getName());
             $em->persist($point);
 
         }
