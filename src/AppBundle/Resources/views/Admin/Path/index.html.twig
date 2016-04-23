@@ -1,0 +1,8 @@
+<table>
+    {% for path in paths %}
+        <tr>
+            <td>{{ path.name }}</td>
+            <td><a href="{{ path('admin_paths_edit', { id: path.id }) }}">Editer</a></td>
+        </tr>
+    {% endfor %}
+</table>

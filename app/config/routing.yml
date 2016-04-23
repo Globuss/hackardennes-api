@@ -1,4 +1,8 @@
 api:
     resource: "."
     type:     "api"
-    prefix:   "/" # Optional
+    prefix:   "/"
+
+_admin:
+    resource: '@AppBundle/Controller/Admin/'
+    type:     'annotation'
