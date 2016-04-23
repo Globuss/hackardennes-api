@@ -44,14 +44,14 @@ class Point
     private $longitude;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
      */
     private $major;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
      */
