@@ -31,6 +31,7 @@ class SortByNearestFilter extends AbstractFilter
             $queryBuilder
                 ->innerJoin('o.points', 'points')
                 ->addSelect('GEO(points.latitude = :lat, points.longitude = :long) AS distance')
+                ->groupBy('o.id')
                 ->addOrderBy('distance')
                 ->setParameter('lat', $lat)
                 ->setParameter('long', $long);

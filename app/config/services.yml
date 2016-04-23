@@ -1,4 +1,25 @@
 services:
+    resource.point.item_operation.get:
+        class:     "Dunglas\ApiBundle\Api\Operation\Operation"
+        public:    false
+        factory:   [ "@api.operation_factory", "createItemOperation" ]
+        arguments: [ "@resource.point", "GET" ]
+
+    resource.point.item_operation.get_by_major_minor:
+        class:   "Dunglas\ApiBundle\Api\Operation\Operation"
+        public:  false
+        factory: [ "@api.operation_factory", "createItemOperation" ]
+        arguments:
+            -    "@resource.point"               # Resource
+            -    [ "GET", "HEAD" ]                 # Methods
+            -    "/point/{major}/{minor}"           # Path
+            -    "AppBundle:Point:getByMajorMinor"         # Controller
+            -    "poing_get_by_major_minor"                 # Route name
+            -    # Context (will be present in Hydra documentation)
+                 "@type":       "hydra:Operation"
+                 "hydra:title": "Retrieve point by major and minor"
+                 "returns":     "xmls:string"
+
     resource.point:
         parent:    "api.resource"
         arguments: [ 'AppBundle\Entity\Point' ]
@@ -6,6 +27,9 @@ services:
         calls:
             -      method:    "initFilters"
                    arguments: [ [ "@resource.point.nearest" ] ]
+            -      method:    "initItemOperations"
+                   arguments: [ [ "@resource.point.item_operation.get", "@resource.point.item_operation.get_by_major_minor" ] ]
+
 
     resource.path:
         parent:    "api.resource"
