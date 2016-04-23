@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -23,6 +24,7 @@ class Point
     private $id;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="string", nullable=true)
      *
      * @var string
@@ -30,6 +32,7 @@ class Point
     private $name;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="string", nullable=true)
      *
      * @var string
@@ -37,6 +40,7 @@ class Point
     private $description;
 
     /**
+     * @Groups({"path"})
      * @ORM\ManyToOne(targetEntity="Path", inversedBy="points")
      *
      * @var string
@@ -44,6 +48,7 @@ class Point
     private $path;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="float")
      *
      * @var float
@@ -51,6 +56,7 @@ class Point
     private $latitude;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="float")
      *
      * @var float
@@ -58,6 +64,7 @@ class Point
     private $longitude;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
@@ -65,6 +72,7 @@ class Point
     private $major;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
@@ -72,6 +80,7 @@ class Point
     private $minor;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
@@ -79,6 +88,7 @@ class Point
     private $rank;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="string", nullable=true)
      *
      * @var string

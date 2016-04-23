@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -23,7 +24,7 @@ class Path
     private $id;
 
     /**
-     *
+     * @Groups({"path"})
      * @ORM\OneToMany(targetEntity="Point", mappedBy="path")
      *
      * @var ArrayCollection<Point>
@@ -31,6 +32,7 @@ class Path
     private $points;
 
     /**
+     * @Groups({"path"})
      * @ORM\Column(type="string")
      *
      * @var string
