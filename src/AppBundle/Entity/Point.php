@@ -23,6 +23,20 @@ class Point
     private $id;
 
     /**
+     * @ORM\Column(type="string")
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $description;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Path", inversedBy="points")
      *
      * @var string
@@ -58,11 +72,18 @@ class Point
     private $minor;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer", nullable=true)
      *
-     * @var boolean
+     * @var integer
      */
-    private $start;
+    private $rank;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $image;
 
     public function __construct(Path $path)
     {
@@ -164,5 +185,69 @@ class Point
     public function setStart($start)
     {
         $this->start = $start;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
+
+    /**
+     * @param int $rank
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }
