@@ -10,14 +10,35 @@ services:
         public:  false
         factory: [ "@api.operation_factory", "createItemOperation" ]
         arguments:
-            -    "@resource.point"               # Resource
-            -    [ "GET", "HEAD" ]                 # Methods
-            -    "/points/major/{major}/minor/{minor}"           # Path
+            -    "@resource.point"                         # Resource
+            -    [ "GET", "HEAD" ]                         # Methods
+            -    "/points/major/{major}/minor/{minor}"     # Path
             -    "AppBundle:Point:getByMajorMinor"         # Controller
-            -    "api_points_major_minor"                 # Route name
+            -    "api_points_major_minor"                  # Route name
             -    # Context (will be present in Hydra documentation)
                  "@type":       "hydra:Operation"
                  "hydra:title": "Retrieve point by major and minor"
+                 "returns":     "xmls:string"
+
+    resource.path.item_operation.get:
+        class:     "Dunglas\ApiBundle\Api\Operation\Operation"
+        public:    false
+        factory:   [ "@api.operation_factory", "createItemOperation" ]
+        arguments: [ "@resource.path", "GET" ]
+
+    resource.path.item_operation.get_themes:
+        class:   "Dunglas\ApiBundle\Api\Operation\Operation"
+        public:  false
+        factory: [ "@api.operation_factory", "createItemOperation" ]
+        arguments:
+            -    "@resource.path"                          # Resource
+            -    [ "GET", "HEAD" ]                         # Methods
+            -    "/paths/themes/all"     # Path
+            -    "AppBundle:Path:getThemes"         # Controller
+            -    "api_paths_themes"                  # Route name
+            -    # Context (will be present in Hydra documentation)
+                 "@type":       "hydra:Operation"
+                 "hydra:title": "Retrieve themes"
                  "returns":     "xmls:string"
 
     resource.point:
@@ -30,6 +51,9 @@ services:
             -      method:    "initItemOperations"
                    arguments: [ [ "@resource.point.item_operation.get", "@resource.point.item_operation.get_by_major_minor" ] ]
 
+    resource.path.search_filter:
+        parent: "api.doctrine.orm.search_filter"
+        arguments: [ { theme: "exact" } ]
 
     resource.path:
         parent:    "api.resource"
@@ -40,7 +64,9 @@ services:
             -      method:    "initDenormalizationContext"
                    arguments: [ { groups: [ "path" ] } ]
             -      method:    "initFilters"
-                   arguments: [ [ "@resource.point.nearest" ] ]
+                   arguments: [ [ "@resource.point.nearest", '@resource.path.search_filter' ] ]
+            -      method:    "initItemOperations"
+                   arguments: [ [ "@resource.path.item_operation.get", "@resource.path.item_operation.get_themes" ] ]
         tags:      [ { name: "api.resource" } ]
 
     resource.point.nearest:
