@@ -39,12 +39,17 @@ class ImportItinerairesCommand extends ContainerAwareCommand
             $point = new Point($path);
 
             $path->setName($fields[1]);
-            $path->setPoints(array($point));
+            $allThePoints = new ArrayCollection();
 
             $point ->setLatitude($fields[24]);
             $point ->setLongitude($fields[25]);
             $point -> setRank(0);
             $point ->setName($fields[29]);
+            $point ->setDescription($fields[32]);
+            $point ->setCity($fields[15]);
+            $point ->setImage($fields[50]);
+            $em->persist($point);
+            $allThePoints->add($point);
 
             // Creer des points aléatoires associés au path
             if(strtoupper($input->getArgument('guessPoint')) == 'Y'){
@@ -55,15 +60,18 @@ class ImportItinerairesCommand extends ContainerAwareCommand
                     $guessedPoint ->setLatitude($fields[24] + $i *(mt_rand() / mt_getrandmax())/1000);
                     $guessedPoint ->setLongitude($fields[25] + $i *(mt_rand() / mt_getrandmax())/1000);
                     $guessedPoint -> setRank($i+1);
-                    $guessedPoint ->setName($fields[29].($i+1));
+                    $guessedPoint ->setName($fields[29].'_'.($i+1));
+                    $guessedPoint ->setCity($fields[15]);
+                    $guessedPoint ->setDescription($fields[32]);
+                    // Point inventé, pas d'image :$guessedPoint ->setImage('');
 
+                    $allThePoints ->add($guessedPoint);
                     $em->persist($guessedPoint);
                 }
             }
-            // SET POINTS
+            $path ->setPoints($allThePoints);
             $em->persist($path);
             $output->writeln("Added path :". $path->getName());
-            $em->persist($point);
 
         }
         $em->flush();

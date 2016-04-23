@@ -35,14 +35,15 @@ class ImportChateauPathCommand extends ContainerAwareCommand
 
             $point = new Point($path);
 
-            $point ->setName($fields[0]);
-            $point ->setDescription($fields[1]);
-            $point ->setImage($fields[2]);
             $point ->setLatitude($fields[3]);
             $point ->setLongitude($fields[4]);
             $point ->setMajor($fields[5]);
             $point ->setMinor($fields[6]);
-            $point -> setRank($rank);
+            $point ->setRank($rank);
+            $point ->setCity('Sedan');
+            $point ->setName($fields[0]);
+            $point ->setDescription($fields[1]);
+            $point ->setImage($fields[2]);
 
             $em->persist($point);
             $allPoints->add($point);
@@ -53,6 +54,8 @@ class ImportChateauPathCommand extends ContainerAwareCommand
         $em->persist($path);
 
         $em->flush();
-        $output->writeln("Import Finish");
+        $output->writeln("Import 'Visite du Chateau de Sedan' Finish");
+        $output->writeln("------------------------------------------------");
+
     }
 }
