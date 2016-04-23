@@ -29,6 +29,9 @@ class ImportChateauPathCommand extends ContainerAwareCommand
 
         $path = new Path();
         $path->setName('Visite du Chateau de Sedan');
+        $path->setCity('Sedan');
+        $path->setTheme('Historique');
+
         $allPoints = new ArrayCollection();
         $rank = 0;
         while ($fields = fgetcsv($file)) {
@@ -40,7 +43,6 @@ class ImportChateauPathCommand extends ContainerAwareCommand
             $point->setMajor(intval($fields[5]) ?: null);
             $point->setMinor(intval($fields[6]) ?: null);
             $point->setRank($rank);
-            $point->setCity('Sedan');
             $point->setName($fields[0]);
             $point->setDescription($fields[1]);
             $point->setImage($fields[2]);

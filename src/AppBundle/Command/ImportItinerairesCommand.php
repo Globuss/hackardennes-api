@@ -39,6 +39,9 @@ class ImportItinerairesCommand extends ContainerAwareCommand
             $point = new Point($path);
 
             $path->setName($fields[1]);
+            $path->setCity($fields[15] ?: null);
+            $path->setTheme($fields[7] ?: "Autre");
+
             $allThePoints = new ArrayCollection();
 
             $point->setLatitude($fields[24]);
@@ -46,7 +49,7 @@ class ImportItinerairesCommand extends ContainerAwareCommand
             $point->setRank(0);
             $point->setName($fields[29]);
             $point->setDescription($fields[32]);
-            $point->setCity($fields[15]);
+
             $point->setImage($fields[50]);
             $em->persist($point);
             $allThePoints->add($point);
@@ -61,7 +64,6 @@ class ImportItinerairesCommand extends ContainerAwareCommand
                     $guessedPoint->setLongitude($fields[25] + $i * (mt_rand() / mt_getrandmax()) / 1000);
                     $guessedPoint->setRank($i + 1);
                     $guessedPoint->setName($fields[29] . '_' . ($i + 1));
-                    $guessedPoint->setCity($fields[15]);
                     $guessedPoint->setDescription($fields[32]);
                     $guessedPoint->setImage($fields[50]);
 

@@ -40,6 +40,22 @@ class Path
     private $name;
 
     /**
+     * @Groups({"path"})
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $city;
+
+    /**
+     * @Groups({"path"})
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $theme;
+
+    /**
      * @return int
      */
     public function getId()
@@ -78,4 +94,39 @@ class Path
     {
         $this->name = $name;
     }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param string $theme
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+    }
+    
+    
+
 }

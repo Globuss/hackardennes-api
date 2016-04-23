@@ -95,13 +95,7 @@ class Point
      */
     private $image;
 
-    /**
-     * @Groups({"path"})
-     * @ORM\Column(type="string", nullable=true)
-     *
-     * @var string
-     */
-    private $city;
+   
 
     public function __construct(Path $path)
     {
@@ -251,22 +245,4 @@ class Point
     {
         $this->image = $image;
     }
-
-    /**
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param string $city
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-    }
-
-
 }
