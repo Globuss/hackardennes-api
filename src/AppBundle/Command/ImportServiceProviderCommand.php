@@ -67,7 +67,7 @@ class ImportServiceProviderCommand extends ContainerAwareCommand
             $provider = new ServiceProvider($fields[2]);
 
             $provider->setName($fields[1]);
-            $provider->setDescription($fields[34] ?: null);
+            $provider->setDescription($fields[35] ?: null);
             $provider->setLatitude($fields[27]);
             $provider->setLongitude($fields[28]);
 
