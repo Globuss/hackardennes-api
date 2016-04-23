@@ -1,7 +1,7 @@
 'AppBundle\Entity\Point':
     point_{1..100}:
         __construct: [ '@path_*' ]
-        latitude: <randomFloat(5, 3, 4)
-        longitude: <randomFloat(5, 49, 50)
+        latitude: 49.75
+        longitude: 3.75
         major: 1
         minor: <current()>
