@@ -31,7 +31,7 @@ class ImportItinerairesCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
         $file = fopen('csv/Itineraires.csv','r');
-        fgetcsv($file); 
+        fgetcsv($file);
         
         while($fields = fgetcsv($file)){
 
@@ -63,7 +63,7 @@ class ImportItinerairesCommand extends ContainerAwareCommand
                     $guessedPoint ->setName($fields[29].'_'.($i+1));
                     $guessedPoint ->setCity($fields[15]);
                     $guessedPoint ->setDescription($fields[32]);
-                    // Point inventé, pas d'image :$guessedPoint ->setImage('');
+                    $guessedPoint ->setImage($fields[50]);
 
                     $allThePoints ->add($guessedPoint);
                     $em->persist($guessedPoint);
