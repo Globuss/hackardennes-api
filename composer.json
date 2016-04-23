@@ -69,7 +69,7 @@
                 "database_name": "DATABASE_NAME",
                 "database_user": "DATABASE_USER",
                 "database_password": "DATABASE_PASSWORD",
-                "database_driver": "DATABASE_DRIVER",
+                "database_driver": "DATABASE_DRIVER"
             }
         }
     },
