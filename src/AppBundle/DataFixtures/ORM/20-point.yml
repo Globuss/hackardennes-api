@@ -4,4 +4,4 @@
         latitude: <randomFloat(5, 3, 4)
         longitude: <randomFloat(5, 49, 50)
         major: 1
-        minot: <current()>
+        minor: <current()>
