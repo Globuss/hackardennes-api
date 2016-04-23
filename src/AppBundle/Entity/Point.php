@@ -33,7 +33,7 @@ class Point
 
     /**
      * @Groups({"path"})
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @var string
      */
@@ -267,6 +267,6 @@ class Point
     {
         $this->city = $city;
     }
-    
+
 
 }
