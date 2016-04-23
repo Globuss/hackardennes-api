@@ -4,6 +4,7 @@ namespace AppBundle\Command;
 
 use AppBundle\Entity\Path;
 use AppBundle\Entity\Point;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -30,8 +31,8 @@ class ImportItinerairesCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
         $file = fopen('csv/Itineraires.csv','r');
-        fgetcsv($file);
-
+        fgetcsv($file); 
+        
         while($fields = fgetcsv($file)){
 
             $path = new Path();
@@ -43,7 +44,7 @@ class ImportItinerairesCommand extends ContainerAwareCommand
             $point ->setLatitude($fields[24]);
             $point ->setLongitude($fields[25]);
             $point -> setRank(0);
-            $point ->setName($fields[25]);
+            $point ->setName($fields[29]);
 
             // Creer des points aléatoires associés au path
             if(strtoupper($input->getArgument('guessPoint')) == 'Y'){
@@ -53,14 +54,13 @@ class ImportItinerairesCommand extends ContainerAwareCommand
                     $guessedPoint = new Point($path);
                     $guessedPoint ->setLatitude($fields[24] + $i *(mt_rand() / mt_getrandmax())/1000);
                     $guessedPoint ->setLongitude($fields[25] + $i *(mt_rand() / mt_getrandmax())/1000);
-                    $guessedPoint -> setRank($i);
-                    $guessedPoint ->setName($fields[25]);
-
+                    $guessedPoint -> setRank($i+1);
+                    $guessedPoint ->setName($fields[29].($i+1));
 
                     $em->persist($guessedPoint);
                 }
             }
-
+            // SET POINTS
             $em->persist($path);
             $output->writeln("Added path :". $path->getName());
             $em->persist($point);
