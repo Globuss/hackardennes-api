@@ -3,8 +3,15 @@ services:
         parent:    "api.resource"
         arguments: [ 'AppBundle\Entity\Point' ]
         tags:      [ { name: "api.resource" } ]
+        calls:
+            -      method:    "initFilters"
+                   arguments: [ [ "@resource.point.nearest" ] ]
 
     resource.path:
         parent:    "api.resource"
         arguments: [ 'AppBundle\Entity\Path' ]
         tags:      [ { name: "api.resource" } ]
+
+    resource.point.nearest:
+        class: 'AppBundle\Filter\SortByNearestFilter'
+        arguments: [ '@doctrine' ]

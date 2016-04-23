@@ -23,7 +23,7 @@ class Point
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @var string
      */
@@ -88,7 +88,6 @@ class Point
     public function __construct(Path $path)
     {
         $this->path  = $path;
-        $this->start = false;
     }
 
     /**
@@ -169,22 +168,6 @@ class Point
     public function getPath()
     {
         return $this->path;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isStart()
-    {
-        return $this->start;
-    }
-
-    /**
-     * @param boolean $start
-     */
-    public function setStart($start)
-    {
-        $this->start = $start;
     }
 
     /**
