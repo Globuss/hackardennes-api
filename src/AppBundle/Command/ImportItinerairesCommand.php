@@ -10,12 +10,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ImportPathCommand extends ContainerAwareCommand
+class ImportItinerairesCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:ImportPathCommand')
+            ->setName('app:ImportItinerairesCommand')
             ->setDescription('Create points associated with item data')
             ->addArgument(
                 'guessPoint',
@@ -43,25 +43,31 @@ class ImportPathCommand extends ContainerAwareCommand
             $point ->setLatitude($fields[24]);
             $point ->setLongitude($fields[25]);
             $point -> setRank(0);
+            $point ->setName($fields[25]);
 
             // Creer des points aléatoires associés au path
             if(strtoupper($input->getArgument('guessPoint')) == 'Y'){
-                
+
                 $nbPoints = rand(1,4); // Nombre de points a generer
                 for($i = 0; $i < $nbPoints; $i++){
                     $guessedPoint = new Point($path);
                     $guessedPoint ->setLatitude($fields[24] + $i *(mt_rand() / mt_getrandmax())/1000);
                     $guessedPoint ->setLongitude($fields[25] + $i *(mt_rand() / mt_getrandmax())/1000);
                     $guessedPoint -> setRank($i);
+                    $guessedPoint ->setName($fields[25]);
+
 
                     $em->persist($guessedPoint);
                 }
             }
 
             $em->persist($path);
+            $output->writeln("Added path :". $path->getName());
             $em->persist($point);
 
         }
         $em->flush();
+        $output->writeln("-----------------------------");
+        $output->writeln("Finish");
     }
 }
