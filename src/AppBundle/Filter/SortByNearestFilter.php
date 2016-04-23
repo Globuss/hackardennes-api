@@ -29,9 +29,9 @@ class SortByNearestFilter extends AbstractFilter
 
         if ($lat & $long && $resource->getEntityClass() === Path::class) {
             $queryBuilder
-                ->innerJoin('o.points', 'points')
                 ->addSelect('GEO(points.latitude = :lat, points.longitude = :long) AS distance')
-                ->groupBy('o')
+                ->innerJoin('o.points', 'points')
+                ->where('points.rank = 0')
                 ->addOrderBy('distance')
                 ->setParameter('lat', $lat)
                 ->setParameter('long', $long);
