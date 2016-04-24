@@ -1,54 +1,54 @@
-NAME;DESC;PHOTO;LAT;LONG;MAJ;MIN;RANK
-Au Cabaret-Vert;"cinq heures du soir
+NAME,DESC,PHOTO,LAT,LONG,MAJ,MIN,RANK
+Au Cabaret-Vert,"cinq heures du soir
 
-Depuis huit jours, j'avais déchiré mes bottines
-Aux cailloux des chemins. J'entrais à Charleroi.
+Depuis huit jours, j'avais dechire mes bottines
+Aux cailloux des chemins. J'entrais a Charleroi.
 ? Au Cabaret-Vert : je demandai des tartines
-De beurre et du jambon qui fût à moitié froid.
+De beurre et du jambon qui fut a moitie froid.
 
 Bienheureux, j'allongeai les jambes sous la table
-Verte : je contemplai les sujets très naïfs
+Verte : je contemplai les sujets tres naifs
 De la tapisserie. ? Et ce fut adorable,
-Quand la fille aux tétons énormes, aux yeux vifs,
+Quand la fille aux tetons enormes, aux yeux vifs,
 
-? Celle-là, ce n'est pas un baiser qui l'épeure ! ?
+? Celle-la, ce n'est pas un baiser qui l'epeure ! ?
 Rieuse, m'apporta des tartines de beurre,
-Du jambon tiède, dans un plat colorié,
+Du jambon tiede, dans un plat colorie,
 
-Du jambon rose et blanc parfumé d'une gousse
+Du jambon rose et blanc parfume d'une gousse
 D'ail, ? et m'emplit la chope immense, avec sa mousse
-Que dorait un rayon de soleil arriéré.";images/6-rimbaud.jpg;49.702100;4.949318;1;1;10
-Ma Bohème;"Je m'en allais, les poings dans mes poches crevées ;
-Mon paletot aussi devenait idéal ;
-J'allais sous le ciel, Muse ! et j'étais ton féal ;
-Oh ! là ! là ! que d'amours splendides j'ai rêvées !
+Que dorait un rayon de soleil arriere.",http://un-zero-un-api.herokuapp.com/images/6-rimbaud.jpg,49.702100,4.949318,1,1,10
+Ma Boheme,"Je m'en allais, les poings dans mes poches crevees ;
+Mon paletot aussi devenait ideal ;
+J'allais sous le ciel, Muse ! et j'etais ton feal ;
+Oh ! la ! la ! que d'amours splendides j'ai revees !
 
 Mon unique culotte avait un large trou.
-- Petit-Poucet rêveur, j'égrenais dans ma course
-Des rimes. Mon auberge était à la Grande-Ourse.
-- Mes étoiles au ciel avaient un doux frou-frou
+- Petit-Poucet reveur, j'egrenais dans ma course
+Des rimes. Mon auberge etait a la Grande-Ourse.
+- Mes etoiles au ciel avaient un doux frou-frou
 
-Et je les écoutais, assis au bord des routes,
-Ces bons soirs de septembre où je sentais des gouttes
-De rosée à mon front, comme un vin de vigueur ;
+Et je les ecoutais, assis au bord des routes,
+Ces bons soirs de septembre ou je sentais des gouttes
+De rosee a mon front, comme un vin de vigueur ;
 
-Où, rimant au milieu des ombres fantastiques,
-Comme des lyres, je tirais les élastiques
-De mes souliers blessés, un pied près de mon coeur !";images/7-paysage.jpg;49.702053;4.949244;1;2;20
-Dormeur du Val;"C'est un trou de verdure où chante une rivière,
+Ou, rimant au milieu des ombres fantastiques,
+Comme des lyres, je tirais les elastiques
+De mes souliers blesses, un pied pres de mon coeur !",http://un-zero-un-api.herokuapp.com/images/7-paysage.jpg,49.702053,4.949244,1,2,20
+Dormeur du Val,"C'est un trou de verdure ou chante une riviere,
 Accrochant follement aux herbes des haillons
-D'argent ; où le soleil, de la montagne fière,
+D'argent ; ou le soleil, de la montagne fiere,
 Luit : c'est un petit val qui mousse de rayons.
 
-Un soldat jeune, bouche ouverte, tête nue,
+Un soldat jeune, bouche ouverte, tete nue,
 Et la nuque baignant dans le frais cresson bleu,
-Dort ; il est étendu dans l'herbe, sous la nue,
-Pâle dans son lit vert où la lumière pleut.
+Dort ; il est etendu dans l'herbe, sous la nue,
+Pale dans son lit vert ou la lumiere pleut.
 
-Les pieds dans les glaïeuls, il dort. Souriant comme
+Les pieds dans les glaieuls, il dort. Souriant comme
 Sourirait un enfant malade, il fait un somme :
 Nature, berce-le chaudement : il a froid.
 
 Les parfums ne font pas frissonner sa narine ;
 Il dort dans le soleil, la main sur sa poitrine,
-Tranquille. Il a deux trous rouges au côté droit.";images/8-arbres.jpg;49.702261;4.949422;1;3;30
+Tranquille. Il a deux trous rouges au cote droit.",http://un-zero-un-api.herokuapp.com/images/8-arbres.jpg,49.702261,4.949422,1,3,30

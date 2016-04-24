@@ -50,7 +50,7 @@ class ImportItinerairesCommand extends ContainerAwareCommand
             $point->setName($fields[29]);
             $point->setDescription($fields[32]);
 
-            $point->setImage($fields[50]);
+            $point->setImage($fields[49] ?: null);
             $em->persist($point);
             $allThePoints->add($point);
 
@@ -65,7 +65,7 @@ class ImportItinerairesCommand extends ContainerAwareCommand
                     $guessedPoint->setRank($i + 1);
                     $guessedPoint->setName($fields[29] . '_' . ($i + 1));
                     $guessedPoint->setDescription($fields[32]);
-                    $guessedPoint->setImage($fields[50]);
+                    $guessedPoint->setImage($fields[49] ?: null);
 
                     $allThePoints->add($guessedPoint);
                     $em->persist($guessedPoint);
