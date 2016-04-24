@@ -11,12 +11,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ImportChateauPathCommand extends ContainerAwareCommand
+class ImportRimbaudCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:ImportChateauPathCommand')
+            ->setName('app:ImportRimbaudCommand')
             ->setDescription('Import of the Demo Path');
 
     }
@@ -24,13 +24,13 @@ class ImportChateauPathCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $file = fopen('csv/abords-du-chateau.csv', 'r');
+        $file = fopen('csv/parcours-rimbaud.csv', 'r');
         fgetcsv($file);
 
         $path = new Path();
-        $path->setName('Visite du Chateau de Sedan');
+        $path->setName('Parcours Rimbaud');
         $path->setCity('Sedan');
-        $path->setTheme('Historique');
+        $path->setTheme('Culturel');
 
         $allPoints = new ArrayCollection();
         $rank = 0;
@@ -56,7 +56,7 @@ class ImportChateauPathCommand extends ContainerAwareCommand
         $em->persist($path);
 
         $em->flush();
-        $output->writeln("Import 'Visite du Chateau de Sedan' Finish");
+        $output->writeln("Import 'Parcours Rimbaud' Finish");
         $output->writeln("------------------------------------------------");
 
     }
